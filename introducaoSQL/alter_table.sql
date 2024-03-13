@@ -1,0 +1,13 @@
+CREATE TABLE IF NOT EXISTS usuarios_temp (
+	id INT,
+	nome VARCHAR(255) NOT NULL,
+	email VARCHAR(100) NOT NULL,
+	endereco VARCHAR(50) NOT NULL,
+	data_nascimento DATE NOT NULL 
+);
+
+ALTER TABLE usuarios_temp
+ALTER COLUMN id SET NOT NULL,
+ALTER id ADD GENERATED ALWAYS AS IDENTITY;
+
+DROP TABLE usuarios_temp;
