@@ -14,7 +14,9 @@ ALTER id ADD GENERATED ALWAYS AS IDENTITY,
 ADD CONSTRAINT unique_reserva_id UNIQUE (id);
 
 ALTER TABLE reservas
-ADD CONSTRAINT fk_reserva_usuario FOREIGN KEY (id_usuario) REFERENCES usuarios (id);
+DROP CONSTRAINT fk_reserva_usuario,
+ADD CONSTRAINT fk_reserva_usuario FOREIGN KEY (id_usuario) REFERENCES usuarios (id) ON DELETE CASCADE;
 
 ALTER TABLE reservas
-ADD CONSTRAINT fk_reserva_destino FOREIGN KEY (id_destino) REFERENCES destinos (id);
+DROP CONSTRAINT IF EXISTS fk_reserva_destino,
+ADD CONSTRAINT fk_reserva_destino FOREIGN KEY (id_destino) REFERENCES destinos (id) ON DELETE CASCADE;
